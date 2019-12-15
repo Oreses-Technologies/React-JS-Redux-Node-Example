@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import { userActions } from '../_actions';
+import {postAPI} from "../utils/api"
 
 class LoginPage extends React.Component {
     constructor(props) {
@@ -20,6 +20,7 @@ class LoginPage extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+    
 
     handleChange(e) {
         const { name, value } = e.target;

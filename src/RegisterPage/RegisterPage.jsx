@@ -42,6 +42,30 @@ class RegisterPage extends React.Component {
             this.props.register(user);
         }
     }
+    onSubmit() {
+        console.log("register response >>>>>>>>>>>>>>", resp)
+
+        let { username,firstName,lastName, password, } = this.state;
+       
+            const data = { "username":username,"firstName":firstName,"lastName":lastName,"password": password, }
+            postAPI('login', data).then(resp => {
+                console.log("register response >>>>>>>>>>>>>>", resp)
+                // if (resp.type == 'success') {
+                //     this.setState({ email: '', password: '', animating: false })
+                //     AsyncStorage.setItem('LoginData', JSON.stringify(resp.data))
+                //     this.props.navigation.navigate('Home')
+                // }
+                // else {
+                //     this.setState({
+                //         animating: false
+                //     })
+                //     setTimeout(() => {
+                //         alert(resp.message)
+                //     }, 100);
+                // }
+            })
+        }
+       
 
     render() {
         const { registering  } = this.props;
@@ -79,7 +103,7 @@ class RegisterPage extends React.Component {
                         }
                     </div>
                     <div className="form-group">
-                        <button className="btn btn-primary">Register</button>
+                        <button className="btn btn-primary" onSubmit={()=>this.onSubmit()}>Register</button>
                         {registering && 
                             <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                         }
